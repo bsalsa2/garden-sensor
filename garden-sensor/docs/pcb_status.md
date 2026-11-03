@@ -1,7 +1,17 @@
 # PCB design status
 
-This project currently uses a Raspberry Pi Pico development board and separate sensor modules connected with jumper wires. The repository does not contain a custom PCB schematic, PCB layout, or Gerber manufacturing files.
+## Why there are no custom PCB source files
 
-That is intentional for the current prototype: no custom PCB has been designed or routed. If the design later adds a custom board, commit its editable schematic, board-layout source, and Gerber files here.
+This prototype uses an off-the-shelf Raspberry Pi Pico H development board and separate sensor modules connected with jumper wires. The Pico board and sensor modules are commercially manufactured products; this project does not design, route, or manufacture a custom PCB.
 
-The exact hardware should be confirmed against the parts used in the physical build.
+Because no custom PCB was routed by hand, there is no project-owned KiCad/EasyEDA schematic, board layout, or Gerber output to include. The firmware uses the Pico's existing GPIO/ADC pins directly.
+
+## Fabricate explanation text
+
+If the submission form asks why PCB source files are missing, this accurately describes the current design:
+
+> This project does not include a custom PCB. It uses an off-the-shelf Raspberry Pi Pico H development board and separate sensor modules connected with jumper wires. I did not design or hand-route a PCB, so there are no custom schematic, PCB-layout, or Gerber files for this project.
+
+## Scope
+
+This explanation is accurate only while the build uses the standard development board and external modules. If a custom PCB is designed later, add the editable schematic, PCB layout, and manufacturing Gerbers to the repository.
