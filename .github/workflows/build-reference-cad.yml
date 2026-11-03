@@ -1,0 +1,37 @@
+name: Build reference CAD
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  export-cad:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install CadQuery
+        run: python -m pip install --upgrade pip cadquery
+      - name: Generate STEP and STL reference assembly
+        working-directory: garden-sensor/hardware
+        run: python generate_reference_model.py
+      - name: Commit generated CAD exports
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add garden-sensor/hardware/garden_sensor_reference_assembly.step
+          git add garden-sensor/hardware/garden_sensor_reference_assembly.stl
+          if git diff --cached --quiet; then
+            echo "CAD exports are already up to date."
+          else
+            git commit -m "Generate reference assembly CAD exports"
+            git push
+          fi
