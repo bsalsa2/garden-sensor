@@ -1,2 +1,6 @@
-Item,Price (USD),Quantity,Link,Total (USD)
-TODO,TODO,TODO,TODO,TODO
+Item,Price (USD),Quantity,Link,Total (USD),Status / notes
+Raspberry Pi Pico development board,TBD,1,TBD,TBD,Confirm exact board model and actual purchase price
+Capacitive soil moisture sensor,TBD,1,TBD,TBD,Confirm exact sensor model and actual purchase price
+DHT22 temperature and humidity sensor,TBD,1,TBD,TBD,Confirm exact module or bare-sensor version and actual purchase price
+Jumper wires,TBD,TBD,TBD,TBD,Record actual quantity and price
+USB power / data cable,TBD,1,TBD,TBD,Confirm cable is suitable for the actual board
