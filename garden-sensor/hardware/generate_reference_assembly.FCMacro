@@ -1,0 +1,54 @@
+# FreeCAD macro: generate editable FCStd and STEP outputs for the proposed Garden Sensor layout.
+# Run this macro in FreeCAD. All geometry is a reference envelope, not measured hardware.
+import FreeCAD as App
+import Part
+import os
+
+try:
+    out_dir = os.path.dirname(os.path.abspath(__file__))
+except Exception:
+    out_dir = os.path.join(os.path.expanduser("~"), "GardenSensorCAD")
+if not os.path.isdir(out_dir):
+    os.makedirs(out_dir)
+
+doc = App.newDocument("GardenSensorReferenceAssembly")
+
+def add_part(name, label, shape, color):
+    obj = doc.addObject("PartDesign::Feature", name)
+    obj.Label = label
+    obj.Shape = shape
+    obj.ViewObject.ShapeColor = color
+    return obj
+
+# Enclosure tray: 100 x 70 x 24 mm, 2 mm walls and floor (provisional).
+outer = Part.makeBox(100, 70, 24, App.Vector(-50, -35, 0))
+inner = Part.makeBox(96, 66, 24, App.Vector(-48, -33, 2))
+tray_shape = outer.cut(inner)
+tray = add_part("EnclosureBase", "Provisional enclosure base (100x70x24)", tray_shape, (0.55, 0.58, 0.62))
+
+# Removable lid with four ventilation slots.
+lid_shape = Part.makeBox(100, 70, 2, App.Vector(-50, -35, 24))
+for x in (-12, -4, 4, 12):
+    slot = Part.makeBox(2, 12, 2, App.Vector(x-1, 14, 24))
+    lid_shape = lid_shape.cut(slot)
+lid = add_part("VentilatedLid", "Provisional ventilated lid", lid_shape, (0.78, 0.80, 0.82))
+
+# Pico H envelope: published board outline 51 x 21 mm; thickness assumed 1.6 mm.
+pico_shape = Part.makeBox(51, 21, 1.6, App.Vector(-41.5, -18.5, 4))
+pico = add_part("PicoH", "Raspberry Pi Pico H envelope (51x21)", pico_shape, (0.12, 0.38, 0.23))
+
+# DHT22 module envelope 28 x 13 x 10 mm; measure the actual module.
+dht_shape = Part.makeBox(28, 13, 10, App.Vector(6, 10.5, 4))
+dht = add_part("DHT22", "DHT22 module envelope (provisional)", dht_shape, (0.22, 0.40, 0.72))
+
+# SEN0193 soil probe envelope 98 x 23 mm; thickness assumed 1.6 mm.
+soil_shape = Part.makeBox(98, 23, 1.6, App.Vector(-49, -69.5, 0))
+soil = add_part("SoilProbe", "DFRobot SEN0193 envelope (98x23)", soil_shape, (0.15, 0.15, 0.17))
+
+doc.recompute()
+fcstd_path = os.path.join(out_dir, "garden_sensor_reference_assembly.FCStd")
+step_path = os.path.join(out_dir, "garden_sensor_reference_assembly.step")
+doc.saveAs(fcstd_path)
+Part.export([tray, lid, pico, dht, soil], step_path)
+print("Saved editable FreeCAD document:", fcstd_path)
+print("Saved STEP assembly:", step_path)
