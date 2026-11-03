@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-      - name: Set up Python
+      - name: Set up Python for CadQuery
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -23,23 +23,19 @@ jobs:
       - name: Generate STEP and STL reference assembly
         working-directory: garden-sensor/hardware
         run: python generate_reference_model.py
-      - name: Install FreeCAD command line tools
+      - name: Install Miniforge
         run: |
-          sudo apt-get update
-          sudo apt-get install -y freecad
+          curl -L -o Miniforge3.sh https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+          bash Miniforge3.sh -b -p "$HOME/miniforge3"
+          echo "$HOME/miniforge3/bin" >> "$GITHUB_PATH"
+      - name: Install FreeCAD from conda-forge
+        run: conda create --yes --name freecad-env --channel conda-forge freecad
       - name: Generate editable FreeCAD document
         env:
           GITHUB_WORKSPACE: ${{ github.workspace }}
           QT_QPA_PLATFORM: offscreen
         run: |
-          if command -v freecadcmd >/dev/null 2>&1; then
-            freecadcmd garden-sensor/hardware/generate_reference_assembly.FCMacro
-          elif command -v FreeCADCmd >/dev/null 2>&1; then
-            FreeCADCmd garden-sensor/hardware/generate_reference_assembly.FCMacro
-          else
-            echo "FreeCAD command-line executable not found"
-            exit 1
-          fi
+          conda run --no-capture-output --name freecad-env freecadcmd garden-sensor/hardware/generate_reference_assembly.FCMacro
           test -s garden-sensor/hardware/garden_sensor_reference_assembly.FCStd
       - name: Commit generated CAD exports
         run: |
