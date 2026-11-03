@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="760" viewBox="0 0 1100 760" role="img" aria-labelledby="t d">
+<title id="t">Garden Sensor provisional reference assembly</title>
+<desc id="d">Exploded isometric illustration of a provisional electronics enclosure, removable ventilated lid, Pico H development board envelope, DHT22 module envelope, and external soil probe envelope. This is a CAD concept visualization, not a photograph.</desc>
+<defs>
+  <linearGradient id="baseTop" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#aebdca"/><stop offset="1" stop-color="#728294"/></linearGradient>
+  <linearGradient id="baseSide" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#647487"/><stop offset="1" stop-color="#3e4d5f"/></linearGradient>
+  <linearGradient id="lid" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e3eaf0" stop-opacity=".92"/><stop offset="1" stop-color="#aab7c6" stop-opacity=".88"/></linearGradient>
+  <style>
+  .title{font:700 30px Arial,sans-serif;fill:#eef4fa;letter-spacing:1px}.sub{font:16px Arial,sans-serif;fill:#b6c5d4}
+  .label{font:700 17px Arial,sans-serif;fill:#f0f4f8}.note{font:14px Arial,sans-serif;fill:#b6c5d4}
+  .tag{font:12px Arial,sans-serif;fill:#dbe5ef}.line{stroke:#91a5b9;stroke-width:1.5;fill:none;stroke-dasharray:5 5}
+  </style>
+</defs>
+<rect width="1100" height="760" fill="#101923"/>
+<path d="M0 590H1100" stroke="#263747"/>
+<text class="title" x="44" y="54">GARDEN SENSOR / REFERENCE ASSEMBLY</text>
+<text class="sub" x="44" y="82">Provisional CAD concept • exploded view • dimensions and envelopes require physical verification</text>
+<g transform="translate(0,12)">
+ <path d="M315 410 L590 284 L832 398 L557 535 Z" fill="url(#baseTop)" stroke="#c7d2dc" stroke-width="2"/>
+ <path d="M315 410 L557 535 L557 610 L315 483 Z" fill="url(#baseSide)" stroke="#8294a6" stroke-width="2"/>
+ <path d="M557 535 L832 398 L832 472 L557 610 Z" fill="#4a5c70" stroke="#8294a6" stroke-width="2"/>
+ <path d="M355 411 L590 306 L790 400 L557 516 Z" fill="#182433" stroke="#5c6d80" stroke-width="2"/>
+ <path d="M355 411 L557 516 L557 525 L355 420 Z" fill="#314253"/>
+ <path d="M557 516 L790 400 L790 411 L557 525 Z" fill="#263748"/>
+</g>
+<g>
+ <path d="M312 255 L587 126 L836 243 L559 379 Z" fill="url(#lid)" stroke="#e1e9ef" stroke-width="2"/>
+ <path d="M312 255 L559 379 L559 400 L312 276 Z" fill="#9aaabd" opacity=".9"/>
+ <path d="M559 379 L836 243 L836 264 L559 400 Z" fill="#8294a8" opacity=".9"/>
+ <g stroke="#75879a" stroke-width="4" stroke-linecap="round">
+  <path d="M493 201L623 263"/><path d="M518 190L648 252"/><path d="M543 178L673 241"/><path d="M568 167L698 229"/>
+ </g>
+</g>
+<g transform="translate(0,2)">
+ <path d="M450 431 L565 378 L677 431 L561 486 Z" fill="#1d6b50" stroke="#48a483" stroke-width="2"/>
+ <path d="M450 431 L561 486 L561 497 L450 442 Z" fill="#15503e"/>
+ <path d="M561 486 L677 431 L677 442 L561 497 Z" fill="#124732"/>
+ <g fill="#eacb68">
+ <circle cx="465" cy="427" r="4"/><circle cx="480" cy="435" r="4"/><circle cx="495" cy="442" r="4"/><circle cx="510" cy="449" r="4"/>
+ <circle cx="625" cy="419" r="4"/><circle cx="640" cy="412" r="4"/><circle cx="655" cy="405" r="4"/>
+ </g>
+ <rect x="521" y="430" width="37" height="24" rx="3" fill="#18252b" transform="rotate(26 521 430)"/>
+ <rect x="578" y="419" width="23" height="18" rx="3" fill="#27333c" transform="rotate(-25 578 419)"/>
+</g>
+<g>
+ <path d="M630 470 L691 442 L734 463 L672 493 Z" fill="#bdc9d5" stroke="#e4ebf1" stroke-width="1.5"/>
+ <path d="M630 470 L672 493 L672 512 L630 489 Z" fill="#8192a3"/>
+ <path d="M672 493 L734 463 L734 482 L672 512 Z" fill="#718397"/>
+ <rect x="661" y="458" width="29" height="19" rx="3" fill="#d6dfe7" transform="rotate(25 661 458)"/>
+</g>
+<g>
+ <path d="M228 505 L416 417 L452 434 L263 523 Z" fill="#dba744" stroke="#f2cb72" stroke-width="2"/>
+ <path d="M263 523 L452 434 L452 449 L263 538 Z" fill="#a8782b"/>
+ <path d="M228 505 L263 523 L263 538 L228 520 Z" fill="#c18e37"/>
+ <rect x="208" y="505" width="28" height="28" rx="4" fill="#2e3742" transform="rotate(-25 208 505)"/>
+</g>
+<path class="line" d="M832 255L935 198H1015"/><text class="label" x="930" y="176">Ventilated lid</text><text class="tag" x="930" y="196">Provisional enclosure top</text>
+<path class="line" d="M824 474L937 520H1040"/><text class="label" x="930" y="548">Enclosure base</text><text class="tag" x="930" y="568">100 × 70 × 24 mm concept</text>
+<path class="line" d="M564 478L490 555H390"/><text class="label" x="252" y="578">Pico H envelope</text><text class="tag" x="252" y="598">51 × 21 mm board outline</text>
+<path class="line" d="M690 487L747 552H850"/><text class="label" x="760" y="579">DHT22 envelope</text><text class="tag" x="760" y="599">Module size provisional</text>
+<path class="line" d="M310 519L222 584H92"/><text class="label" x="44" y="615">Soil probe envelope</text><text class="tag" x="44" y="635">SEN0193 outline approximation</text>
+<rect x="44" y="674" width="1012" height="48" rx="8" fill="#1b2a39" stroke="#405367"/>
+<text class="note" x="64" y="703">REFERENCE VISUAL ONLY — not a photograph of a completed build. Verify every dimension, mount, connector, and clearance against the actual parts before fabrication.</text>
+</svg>
