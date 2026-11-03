@@ -2,8 +2,7 @@
 
 A small, low-cost sensor station that measures **TODO: what it measures, e.g. soil moisture and air temperature** in a garden bed and **TODO: what it does with the readings, e.g. logs them to a file / shows them on a screen**, so watering and planting decisions can be based on data instead of guesswork.
 
-> **Status:** TODO: pick one and keep it honest: *design in progress* / *building* / *working on the bench* / *running in the garden since DATE*.
-
+> **Status:** Waiting for grants. Then building.
 <!-- TODO: add a photo or two of the finished build, and a screenshot of the readings.
      Before uploading photos, remove location data (EXIF) and don't show your house number or street. -->
 
