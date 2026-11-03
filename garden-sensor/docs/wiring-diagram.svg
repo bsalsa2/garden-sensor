@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Garden Sensor proposed wiring diagram</title>
+<desc id="desc">A Raspberry Pi Pico H connects to a capacitive soil sensor on GP26 and a DHT22 module on GP15. Both sensors share 3V3 and ground.</desc>
+<defs>
+  <style>
+    .bg{fill:#f4f6f8}.panel{fill:#fff;stroke:#cbd5df;stroke-width:2}.board{fill:#1d6547;stroke:#11422f;stroke-width:3}.pin{fill:#f7d66b;stroke:#7d6120;stroke-width:1}.head{font:700 28px Arial,sans-serif;fill:#152333}.sub{font:16px Arial,sans-serif;fill:#526273}.name{font:700 20px Arial,sans-serif;fill:#172536}.small{font:15px Arial,sans-serif;fill:#344557}.tiny{font:13px Arial,sans-serif;fill:#526273}.picoText{font:700 19px Arial,sans-serif;fill:#fff}.wire3{fill:none;stroke:#d43b36;stroke-width:5;stroke-linecap:round}.wireg{fill:none;stroke:#273746;stroke-width:5;stroke-linecap:round}.wirea{fill:none;stroke:#d29a24;stroke-width:5;stroke-linecap:round}.wired{fill:none;stroke:#3277c8;stroke-width:5;stroke-linecap:round}.label{font:700 15px Arial,sans-serif;paint-order:stroke;stroke:#fff;stroke-width:5px;stroke-linejoin:round}.legend{font:15px Arial,sans-serif;fill:#26384a}
+  </style>
+</defs>
+<rect class="bg" width="1200" height="760"/>
+<text class="head" x="48" y="55">Garden Sensor — proposed wiring</text>
+<text class="sub" x="48" y="84">Raspberry Pi Pico H · SEN0193 capacitive soil sensor · DHT22 3-pin module</text>
+<rect class="panel" x="390" y="145" width="420" height="470" rx="22"/>
+<rect class="board" x="495" y="190" width="210" height="370" rx="15"/>
+<text class="picoText" x="600" y="355" text-anchor="middle">RASPBERRY PI</text>
+<text class="picoText" x="600" y="382" text-anchor="middle">PICO H</text>
+<text x="600" y="412" text-anchor="middle" style="font:14px Arial;fill:#dbefe4">SC0917 · 3.3 V logic</text>
+<!-- sensor panels -->
+<rect class="panel" x="48" y="180" width="285" height="250" rx="18"/>
+<text class="name" x="72" y="220">Soil moisture</text>
+<text class="small" x="72" y="246">DFRobot SEN0193</text>
+<rect x="84" y="286" width="215" height="75" rx="12" fill="#202c34"/>
+<rect x="112" y="300" width="160" height="46" rx="5" fill="#344955"/>
+<text x="192" y="327" text-anchor="middle" style="font:700 15px Arial;fill:#fff">3-pin analog</text>
+<text class="tiny" x="72" y="390">VCC · GND · AOUT</text>
+<text class="tiny" x="72" y="411">Keep upper electronics dry.</text>
+<rect class="panel" x="866" y="180" width="286" height="250" rx="18"/>
+<text class="name" x="890" y="220">Air temperature</text>
+<text class="small" x="890" y="246">Waveshare DHT22 module</text>
+<rect x="908" y="286" width="200" height="75" rx="12" fill="#e7edf3" stroke="#8c9baa" stroke-width="2"/>
+<rect x="964" y="293" width="88" height="58" rx="8" fill="#c2d0dd"/>
+<text x="1008" y="326" text-anchor="middle" style="font:700 15px Arial;fill:#26384a">DHT22</text>
+<text class="tiny" x="890" y="390">VCC · DATA/DOUT · GND</text>
+<text class="tiny" x="890" y="411">Check module pin labels.</text>
+<!-- pin labels left edge -->
+<circle class="pin" cx="495" cy="255" r="7"/><text class="small" x="476" y="260" text-anchor="end">3V3 (36)</text>
+<circle class="pin" cx="495" cy="325" r="7"/><text class="small" x="476" y="330" text-anchor="end">GND (38)</text>
+<circle class="pin" cx="495" cy="405" r="7"/><text class="small" x="476" y="410" text-anchor="end">GP26 / ADC0 (31)</text>
+<!-- right pin labels -->
+<circle class="pin" cx="705" cy="255" r="7"/><text class="small" x="724" y="260">3V3 (36)</text>
+<circle class="pin" cx="705" cy="325" r="7"/><text class="small" x="724" y="330">GND (38)</text>
+<circle class="pin" cx="705" cy="405" r="7"/><text class="small" x="724" y="410">GP15 (20)</text>
+<!-- wires soil to left -->
+<path class="wire3" d="M299 306 H360 V255 H495"/>
+<path class="wireg" d="M299 325 H380 V325 H495"/>
+<path class="wirea" d="M299 345 H350 V405 H495"/>
+<text class="label" x="368" y="239" fill="#d43b36">3V3</text>
+<text class="label" x="385" y="311" fill="#273746">GND</text>
+<text class="label" x="358" y="427" fill="#a5740b">AOUT</text>
+<!-- wires DHT to right -->
+<path class="wire3" d="M705 255 H830 V306 H908"/>
+<path class="wired" d="M705 405 H845 V345 H908"/>
+<path class="wireg" d="M705 325 H820 V365 H908"/>
+<text class="label" x="822" y="239" fill="#d43b36">VCC</text>
+<text class="label" x="838" y="425" fill="#3277c8">DATA</text>
+<text class="label" x="826" y="385" fill="#273746">GND</text>
+<!-- legend and notes -->
+<rect class="panel" x="48" y="475" width="1104" height="205" rx="18"/>
+<text class="name" x="78" y="516">Connection legend</text>
+<path class="wire3" d="M80 555 H145"/><text class="legend" x="160" y="561">3V3 power</text>
+<path class="wireg" d="M310 555 H375"/><text class="legend" x="390" y="561">Ground (GND)</text>
+<path class="wirea" d="M580 555 H645"/><text class="legend" x="660" y="561">Soil analog signal</text>
+<path class="wired" d="M860 555 H925"/><text class="legend" x="940" y="561">DHT22 digital data</text>
+<text class="small" x="78" y="606">Important: this is a proposed pin map, not proof of a completed physical build.</text>
+<text class="small" x="78" y="634">Verify exact module labels and voltage requirements before powering. Disconnect USB before rewiring.</text>
+<text class="tiny" x="78" y="659">Firmware defaults: SOIL_ADC_PIN = 26 · DHT_PIN = 15 · INTERVAL_S = 600</text>
+</svg>
