@@ -1,13 +1,12 @@
 # FreeCAD macro: generate editable FCStd and STEP outputs for the proposed Garden Sensor layout.
-# Run this macro in FreeCAD. All geometry is a reference envelope, not measured hardware.
+# Run with: freecadcmd garden-sensor/hardware/generate_reference_assembly.FCMacro
+# All geometry is a reference envelope, not measured hardware.
 import FreeCAD as App
 import Part
 import os
 
-try:
-    out_dir = os.path.dirname(os.path.abspath(__file__))
-except Exception:
-    out_dir = os.path.join(os.path.expanduser("~"), "GardenSensorCAD")
+workspace = os.environ.get("GITHUB_WORKSPACE", os.getcwd())
+out_dir = os.path.join(workspace, "garden-sensor", "hardware")
 if not os.path.isdir(out_dir):
     os.makedirs(out_dir)
 
