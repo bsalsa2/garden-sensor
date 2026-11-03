@@ -13,10 +13,9 @@ if not os.path.isdir(out_dir):
 doc = App.newDocument("GardenSensorReferenceAssembly")
 
 def add_part(name, label, shape, color):
-    obj = doc.addObject("PartDesign::Feature", name)
+    obj = doc.addObject("Part::Feature", name)
     obj.Label = label
     obj.Shape = shape
-    obj.ViewObject.ShapeColor = color
     return obj
 
 # Enclosure tray: 100 x 70 x 24 mm, 2 mm walls and floor (provisional).
