@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Local MicroPython configuration and generated sensor logs
+garden-sensor/firmware/config.py
+garden-sensor/firmware/readings.csv
+
+# Local development environments
+.venv/
+venv/
+env/
+
+# Generated plots
+*.png
+*.svg
