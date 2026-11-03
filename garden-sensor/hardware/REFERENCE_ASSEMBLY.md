@@ -10,10 +10,11 @@
 
 ## Generated model files
 
+- [Editable FreeCAD document (.FCStd)](garden_sensor_reference_assembly.FCStd)
 - [STEP assembly](garden_sensor_reference_assembly.step)
 - [STL preview](garden_sensor_reference_assembly.stl)
 - `generate_reference_model.py`: editable CadQuery source; regenerates STEP and STL.
-- `generate_reference_assembly.FCMacro`: FreeCAD macro; creates an editable `.FCStd` document and STEP export when run in FreeCAD. The generated `.FCStd` is not currently committed.
+- `generate_reference_assembly.FCMacro`: FreeCAD macro; regenerates the editable `.FCStd` document and STEP export.
 
 ## Important limitation
 
