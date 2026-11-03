@@ -12,6 +12,6 @@ garden-sensor/firmware/readings.csv
 venv/
 env/
 
-# Generated plots
-*.png
-*.svg
+# Generated plot output only (keep project photos and diagrams)
+garden-sensor/plot.png
+garden-sensor/firmware/plot.png
