@@ -1,7 +1,8 @@
 Item,Part number / specification,Qty,Unit price USD,Line total USD,Purchase link,Status / notes
-Microcontroller,Raspberry Pi Pico H (SC0917; pre-installed headers),1,5.00,5.00,https://www.digikey.com/en/products/detail/raspberry-pi/SC0917/16608257,Proposed choice; confirm this matches the board actually used
-Soil sensor,DFRobot Gravity capacitive soil moisture sensor SEN0193,1,5.90,5.90,https://www.dfrobot.com/product-1385.html,Proposed choice; includes analog sensor cable; 3.3-5.5 V
-Air sensor,Waveshare DHT22 temperature-humidity module,1,9.99,9.99,https://www.waveshare.com/product/modules/sensors/temperature-humidity-barometer/dht22-temperature-humidity-sensor.htm,Proposed choice; includes 3-pin cable; verify exact connector pin labels
-USB power/data cable,Micro-USB data cable,1,TBD,TBD,,Confirm whether already owned or included in kit
-Jumper wiring,Female jumper leads as required,1 set,TBD,TBD,,Confirm exact cable ends and whether included in kit
-Enclosure,3D-printed enclosure / mounting hardware,1,TBD,TBD,,Reference geometry only; filament and fasteners depend on final dimensions
+Microcontroller,Raspberry Pi Pico 2 W (RP2350; Wi-Fi and Bluetooth; headers not pre-soldered),1,7.70,7.70,https://www.sparkfun.com/raspberry-pi-pico-2-w.html,Upgrade from Pico H; soldering headers required; confirm whether the project has the tools and skills for this
+Soil sensor,DFRobot Gravity IP65 capacitive soil moisture sensor SEN0308,1,14.90,14.90,https://www.dfrobot.com/product-2054.html,Upgrade from SEN0193; outdoor-rated IP65 sensor; analog output; verify output voltage is within Pico ADC limits before connecting
+Air sensor,DFRobot SHT31 outdoor temperature and humidity sensor SEN0385,1,19.90,19.90,https://www.dfrobot.com/product-2160.html,Upgrade from DHT22; weather-resistant housing; I2C; 3.3-5V; ±2% RH and typical ±0.2°C accuracy; not for submersion
+USB power/data cable,USB cable compatible with Pico 2 W,1,TBD,TBD,,Confirm cable type and whether already owned or included in kit
+Jumper wiring,2.54 mm jumper leads compatible with sensor connectors,1 set,TBD,TBD,,Confirm required connector ends and whether already owned
+Enclosure,Outdoor-rated enclosure sized for the final electronics layout,1,TBD,TBD,,Select after confirming actual board and sensor dimensions; do not use the provisional CAD dimensions as fit-verified
+,PRICED COMPONENTS SUBTOTAL,,,42.50,,Supplier-listed prices checked 2026-11-04; shipping and tax excluded; recheck at checkout
