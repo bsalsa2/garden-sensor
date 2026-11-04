@@ -32,6 +32,6 @@ For each actual work session, add a new section with:
 
 Today I am FINALLY submitting my idea that has been brewing for a while. This garden sensor will be soil moisture, air temperature, and WAY MORE! And there will be a website interface so I can see live update from my phone!
 
-![](https://fabricate.hackclub-assets.com/1b1b9bb566fd27d065b221ffbb89df28e3a14654e4250ac1fa6d72fe7a7f0f1b/image-jpeg/IMG_1718.JPG)
+![Photo of the development board for the garden-sensor project](docs/images/pico-board.jpg)
 
 **Total time spent: 1h**
