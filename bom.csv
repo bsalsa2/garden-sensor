@@ -1,8 +1,10 @@
 Item,Part number / specification,Qty,Unit price USD,Line total USD,Purchase link,Status / notes
-Microcontroller,Raspberry Pi Pico 2 W (RP2350; Wi-Fi and Bluetooth; headers not pre-soldered),1,7.70,7.70,https://www.sparkfun.com/raspberry-pi-pico-2-w.html,Upgrade from Pico H; soldering headers required; confirm whether the project has the tools and skills for this
-Soil sensor,DFRobot Gravity IP65 capacitive soil moisture sensor SEN0308,1,14.90,14.90,https://www.dfrobot.com/product-2054.html,Upgrade from SEN0193; outdoor-rated IP65 sensor; analog output; verify output voltage is within Pico ADC limits before connecting
-Air sensor,DFRobot SHT31 outdoor temperature and humidity sensor SEN0385,1,19.90,19.90,https://www.dfrobot.com/product-2160.html,Upgrade from DHT22; weather-resistant housing; I2C; 3.3-5V; ±2% RH and typical ±0.2°C accuracy; not for submersion
-USB power/data cable,USB cable compatible with Pico 2 W,1,TBD,TBD,,Confirm cable type and whether already owned or included in kit
-Jumper wiring,2.54 mm jumper leads compatible with sensor connectors,1 set,TBD,TBD,,Confirm required connector ends and whether already owned
-Enclosure,Outdoor-rated enclosure sized for the final electronics layout,1,TBD,TBD,,Select after confirming actual board and sensor dimensions; do not use the provisional CAD dimensions as fit-verified
-,PRICED COMPONENTS SUBTOTAL,,,42.50,,Supplier-listed prices checked 2026-11-04; shipping and tax excluded; recheck at checkout
+Main computer,Raspberry Pi 4 Model B 4GB RAM,1,TBD,TBD,https://www.microcenter.com/product/621439/raspberry-pi-4-model-b,Select and verify the 4GB version before purchase; current listing does not clearly identify RAM capacity
+Soil sensor,DFRobot Gravity IP65 capacitive soil moisture sensor SEN0308,1,14.90,14.90,https://www.dfrobot.com/product-2054.html,Outdoor-rated capacitive sensor; analog output; connect through the ADS1115 ADC, not directly to Pi GPIO
+Air sensor,DFRobot SHT31 outdoor temperature and humidity sensor SEN0385,1,19.90,19.90,https://www.dfrobot.com/product-2160.html,Weather-resistant temperature/humidity sensor; I2C; verify final connector and voltage details before wiring
+Analog-to-digital converter,DFRobot Gravity ADS1115 16-bit ADC module DFR0553,1,8.90,8.90,https://www.dfrobot.com/product-1730.html,Required because Raspberry Pi 4 has no built-in analog input; use 3.3V logic and keep sensor output within ADC input limits
+Power supply,Official Raspberry Pi USB-C 5.1V 3A power supply,1,8.33,8.33,https://shop.pimoroni.com/products/raspberry-pi-official-usb-c-power-supply,15W supply for Raspberry Pi 4; price shown by supplier; shipping/tax excluded
+Storage,SanDisk 32GB microSD card,1,6.98,6.98,https://www.walmart.com/ip/SanDisk-32GB-ImageMate-microSDHC-UHS-1-Memory-Card-Up-to-120MB-s-SDSQUA4-032G-Aw6ka/547052541,Minimum practical OS storage; price shown by supplier; shipping/tax excluded
+Jumper wiring,2.54 mm jumper leads compatible with Pi GPIO and sensor connectors,1 set,TBD,TBD,,Confirm exact connector ends and whether already owned
+Enclosure,Outdoor-rated enclosure sized for the final Raspberry Pi and sensor layout,1,TBD,TBD,,Redesign CAD for the larger Pi 4 board; previous Pico enclosure is not compatible
+,PRICED COMPONENTS SUBTOTAL EXCLUDING PI 4,,,59.01,,Supplier-listed prices checked 2026-11-04; shipping and tax excluded; verify prices at checkout
