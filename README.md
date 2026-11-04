@@ -111,3 +111,42 @@ TODO: choose and add a `LICENSE` file. Common choices are MIT for code and CERN-
 ## Credits
 
 TODO: credit libraries, tutorials, and designs you used or adapted, with links. If a program or sponsor provided parts or funding, you can thank them here, and some programs ask you to.
+
+
+---
+
+## Project files, CAD, and diagrams
+
+The links below point to the current repository files. The assembly artwork is a **provisional CAD reference**, not a photograph or a claim that the physical device has been assembled or fit-tested.
+
+### Assembly reference
+
+![Provisional Garden Sensor reference assembly](garden-sensor/docs/reference-assembly-overview.svg)
+
+- [Editable FreeCAD source assembly (.FCStd)](garden-sensor/hardware/garden_sensor_reference_assembly.FCStd)
+- [STEP assembly export (.step)](garden-sensor/hardware/garden_sensor_reference_assembly.step)
+- [STL preview (.stl)](garden-sensor/hardware/garden_sensor_reference_assembly.stl)
+- [CadQuery source generator](garden-sensor/hardware/generate_reference_model.py)
+- [FreeCAD macro source](garden-sensor/hardware/generate_reference_assembly.FCMacro)
+- [Reference assembly assumptions and limitations](garden-sensor/hardware/REFERENCE_ASSEMBLY.md)
+
+### Wiring
+
+![Proposed Pico and sensor wiring diagram](garden-sensor/docs/wiring-diagram.svg)
+
+- [Wiring instructions](garden-sensor/docs/wiring.md)
+- [BOM (CSV)](bom.csv)
+
+### Firmware and tests
+
+- [MicroPython firmware](garden-sensor/firmware/main.py)
+- [Sensor calibration and CSV logic](garden-sensor/firmware/logic.py)
+- [Example configuration](garden-sensor/firmware/config.example.py)
+- [Unit tests](garden-sensor/tests/test_logic.py)
+- [CSV plotting tool](garden-sensor/tools/plot_readings.py)
+
+### PCB design status
+
+This project does not have a custom hand-routed PCB. It uses an off-the-shelf Raspberry Pi Pico H development board and separate sensor modules connected with jumper wires. No project-specific KiCad/EasyEDA schematic, PCB layout, or Gerber manufacturing files exist. The Pico's own circuit board is a commercially manufactured development board, not a PCB designed for this project. See [the PCB design status note](garden-sensor/docs/pcb_status.md).
+
+There is therefore no project-designed PCB screenshot to include. The wiring diagram above documents the connections between the development board and the sensor modules.
