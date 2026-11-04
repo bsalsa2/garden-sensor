@@ -1,8 +1,16 @@
+---
+title: "Multi Use Garden Soil Sensor"
+github: "https://github.com/bsalsa2/garden-sensor"
+description: "Garden Soil Moisture Sensor, that includes many features!"
+created_at: "2026-11-03"
+total_time: "1h"
+---
+
 # Build journal
 
 This file is intentionally an empty journal scaffold. Add your own dated entries as you work on the physical project. Do not submit it as a completed journal until it contains your real build notes and photographs.
 
-## Entry format
+# Entry format
 
 For each actual work session, add a new section with:
 
@@ -15,6 +23,15 @@ For each actual work session, add a new section with:
 
 ---
 
-## My build entries
+# My build entries
 
 <!-- Add your own completed, dated entries below this line. There are no completed entries in this template yet. -->
+
+# November 3, 2026: Just added!
+<!-- fabricate:entry 2083 -->
+
+Today I am FINALLY submitting my idea that has been brewing for a while. This garden sensor will be soil moisture, air temperature, and WAY MORE! And there will be a website interface so I can see live update from my phone!
+
+![](https://fabricate.hackclub-assets.com/1b1b9bb566fd27d065b221ffbb89df28e3a14654e4250ac1fa6d72fe7a7f0f1b/image-jpeg/IMG_1718.JPG)
+
+**Total time spent: 1h**
