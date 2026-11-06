@@ -124,6 +124,7 @@ The links below point to the current repository files. The assembly artwork is a
 ![Provisional Garden Sensor reference assembly](garden-sensor/docs/reference-assembly-overview.svg)
 
 - [Editable FreeCAD source assembly (.FCStd)](garden-sensor/hardware/garden_sensor_reference_assembly.FCStd)
+- [Fusion 360 editable-source generator (.py)](garden-sensor/hardware/create_fusion_source.py) — run inside Fusion 360, then save the generated design as `.f3d` for the Fabricate checker.
 - [STEP assembly export (.step)](garden-sensor/hardware/garden_sensor_reference_assembly.step)
 - [STL preview (.stl)](garden-sensor/hardware/garden_sensor_reference_assembly.stl)
 - [CadQuery source generator](garden-sensor/hardware/generate_reference_model.py)
