@@ -119,6 +119,10 @@ TODO: credit libraries, tutorials, and designs you used or adapted, with links. 
 
 The links below point to the current repository files. The assembly artwork is a **provisional CAD reference**, not a photograph or a claim that the physical device has been assembled or fit-tested.
 
+### Editable Onshape CAD source
+
+The STEP assembly has been imported into an Onshape document. [Open the editable garden sensor CAD document in Onshape](https://cad.onshape.com/documents/76dcfb4d009c138c2a52466f/w/306111fc660342a21d2bcbd/e/0c180c4d4b855de5293ec742). The model is a provisional reference design; dimensions and fit have not been verified against a physical build.
+
 ### Assembly reference
 
 ![Provisional Garden Sensor reference assembly](garden-sensor/docs/reference-assembly-overview.svg)
