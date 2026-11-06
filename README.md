@@ -1,157 +1,94 @@
 # Garden Sensor
 
-A small, low-cost sensor station that measures **TODO: what it measures, e.g. soil moisture and air temperature** in a garden bed and **TODO: what it does with the readings, e.g. logs them to a file / shows them on a screen**, so watering and planting decisions can be based on data instead of guesswork.
+A small garden-monitoring project built around a Raspberry Pi Pico. The idea is to collect soil-moisture and air-condition readings and keep a simple record so changes can be compared over time.
 
-> **Status:** Waiting for grants. Then building.
-<!-- TODO: add a photo or two of the finished build, and a screenshot of the readings.
-     Before uploading photos, remove location data (EXIF) and don't show your house number or street. -->
+**Project status:** Design and firmware are in progress. The CAD files are reference models, and the hardware has not yet been documented as assembled or tested.
 
-## Why I'm building this
+## What the project is meant to do
 
-TODO: two or three honest sentences about the problem you want to solve. For example, what goes wrong when you water by feel, or what you'd like to know about your garden that you can't see now.
+- Read an analog capacitive soil-moisture sensor.
+- Read air temperature and relative humidity from a DHT22 sensor.
+- Save readings as CSV data on the Pico.
+- Print each reading over the USB serial connection so it can be viewed on a computer.
 
-## What it does
+The current firmware is a starting point. It has not been verified on the finished hardware, so the wiring and configuration should be checked against the exact parts used.
 
-Only list what is actually working. Move anything unfinished to the roadmap.
+## Current design
 
-- [ ] TODO: Measures **...** every **...** minutes
-- [ ] TODO: Stores readings in **...** (CSV file on an SD card, serial output, etc.)
-- [ ] TODO: Shows or sends them by **...**
+The software and wiring documents currently describe a **Raspberry Pi Pico H**, a capacitive soil sensor, and a DHT22 module. The Pico reads the soil sensor through an ADC input and reads the DHT22 through a digital GPIO pin.
 
-## Hardware
+The parts list has changed during planning. Check the [bill of materials](bom.csv) before ordering anything; it may need to be updated to match the final board and sensors.
 
-| Part | Qty | What it's for | Notes |
-|---|---|---|---|
-| TODO: microcontroller board | 1 | Runs the firmware | |
-| TODO: soil moisture sensor | 1 | Measures how wet the soil is | Needs calibration, see below |
-| TODO: temperature (and humidity) sensor | 1 | Air conditions | |
-| TODO: power (battery pack / USB supply) | 1 | | |
-| TODO: weatherproof enclosure | 1 | Protects the electronics | |
-| TODO: wires, connectors, screws | | | |
+## Hardware and wiring
 
-**Estimated cost:** TODO (add up the real prices; say if any parts were donated or granted).
-
-## How it works
-
-```
-[soil sensor] ──┐
-                ├──> [microcontroller] ──> [storage / display]
-[air sensor]  ──┘            ▲
-                        [power supply]
-```
-
-TODO: replace the diagram above if your design is different, then add two or three sentences on what the firmware does each cycle (wake, read sensors, convert, save, sleep).
-
-## Wiring
-
-| Sensor / part | Sensor pin | Board pin |
+| Part | Purpose | Status |
 |---|---|---|
-| TODO | TODO | TODO |
+| Raspberry Pi Pico | Reads sensors and runs MicroPython | Planned |
+| Capacitive soil-moisture sensor | Measures soil moisture as an analog signal | Sensor owned; exact model should be confirmed |
+| DHT22 module | Measures air temperature and humidity | Planned |
+| USB power and data cable | Powers the Pico and connects it to a computer | Required |
+| Enclosure | Protects the electronics | CAD reference exists; fit not verified |
+| Jumper wires | Connect the sensors to the Pico | Required |
 
-TODO: add a wiring diagram or photo in `docs/`.
+The proposed pin connections and safety checks are in [the wiring guide](garden-sensor/docs/wiring.md). Check the labels on the actual modules before wiring. The Pico uses 3.3 V GPIO, so sensor signal voltage must stay within the Pico's input limits.
 
-## Build it yourself
+## How the firmware works
 
-1. **Get the parts** listed above.
-2. **Make the case.** TODO: link to the CAD or print files in this repo (for example `hardware/`).
-3. **Wire it** following the table above. Double-check power polarity before connecting anything.
-4. **Flash the firmware.** TODO: tool and commands, for example:
-   ```
-   TODO: the exact steps to upload the code to your board
-   ```
-5. **Calibrate the soil sensor.** Read the sensor in dry air and again in a glass of water, and put those two raw values in `TODO: config file`. Different sensors and different soils read differently, so don't skip this.
-6. **Put it in the garden bed** and check that the readings change when you water.
+The MicroPython program repeatedly:
 
-## Configuration
+1. Reads the soil sensor's raw ADC value.
+2. Converts that value to a percentage using dry and wet calibration readings.
+3. Requests temperature and humidity from the DHT22.
+4. Appends a row to a CSV log.
+5. Prints the row over the serial connection, then waits for the next interval.
 
-Settings such as the reading interval and calibration values live in `TODO: config file name`.
+The default interval and calibration values are in [the example configuration](garden-sensor/firmware/config.example.py). The program assumes a DHT22 on the configured digital pin and a capacitive sensor on the configured ADC pin.
 
-**Never commit secrets** (Wi-Fi passwords, API keys). Keep them in a file that is listed in `.gitignore`, and commit a copy with fake values, such as `config.example.py`.
+A soil-moisture percentage is an estimate based on calibration, not a universal measurement of water content. Calibration should be done with the actual sensor and soil.
 
-## Data format
+## CAD and project files
 
-Readings are saved one per line. Example (edit to match your real output):
+The enclosure model is a **provisional reference design**. It has not been checked against measured components or a completed physical build.
 
-```
-timestamp,soil_moisture_raw,soil_moisture_pct,air_temp_c
-2026-01-01T08:00:00,TODO,TODO,TODO
-```
+- [Editable Onshape garden sensor document](https://cad.onshape.com/documents/76dcfb4d009c138c2a52466f/w/306111fc660342a21d2bcbd/e/0c180c4d4b855de5293ec742)
+- [Editable FreeCAD source (.FCStd)](garden-sensor/hardware/garden_sensor_reference_assembly.FCStd)
+- [STEP assembly export (.step)](garden-sensor/hardware/garden_sensor_reference_assembly.step)
+- [STL preview (.stl)](garden-sensor/hardware/garden_sensor_reference_assembly.stl)
+- [CadQuery model generator](garden-sensor/hardware/generate_reference_model.py)
+- [FreeCAD macro](garden-sensor/hardware/generate_reference_assembly.FCMacro)
+- [CAD assumptions and limitations](garden-sensor/hardware/REFERENCE_ASSEMBLY.md)
+- [Wiring diagram](garden-sensor/docs/wiring-diagram.svg)
 
-## Accuracy and known limits
+The enclosure dimensions and internal clearances are provisional. Measure the actual board, sensor modules, connectors, and cables before making a final enclosure.
 
-Be specific about what you actually checked. For example:
+## Repository contents
 
-- TODO: how you checked the soil readings (for example, weighing a pot of soil dry and wet, or comparing with a hand test)
-- TODO: how long it has run outdoors, and what failed (condensation, battery life, sensor drift, wires coming loose)
-- TODO: anything you know it does *not* measure well
+- `garden-sensor/firmware/` — MicroPython program, configuration example, and sensor/data logic.
+- `garden-sensor/hardware/` — CAD source files and model exports.
+- `garden-sensor/docs/` — Wiring notes, diagrams, and design-status documentation.
+- `garden-sensor/tests/` — Tests for hardware-independent data and calibration functions.
+- `garden-sensor/tools/` — Utilities for working with logged readings.
+- `bom.csv` — Parts list and purchasing notes.
 
-## Repository layout
+## PCB status
 
-```
-TODO: adjust to your real folders
-firmware/     code that runs on the board
-hardware/     case files, wiring diagrams
-docs/         photos, build notes
-data/         example readings
-```
+This version uses a standard development board and separate sensor modules connected with jumper wires. It does not have a custom-designed PCB, so there are no project-specific KiCad or EasyEDA schematic, board-layout, or Gerber files. See [the PCB status note](garden-sensor/docs/pcb_status.md).
 
-## Build log
+## Testing and limitations
 
-TODO: link to your journal or build notes, with dates and hours, showing the real process including what didn't work.
+The firmware's hardware-independent logic can be tested on a regular computer, but that does not prove the sensors or complete device work. The hardware build, sensor calibration, enclosure fit, and outdoor performance still need to be checked and recorded.
 
-## Roadmap
+The soil probe's electronics and connector should be kept dry. Do not assume that an enclosure or sensor module is weatherproof unless its rating and the cable entries have been checked for the actual installation.
 
-- [ ] TODO: next improvement
-- [ ] TODO: another one
+## Next steps
 
-## License
-
-TODO: choose and add a `LICENSE` file. Common choices are MIT for code and CERN-OHL or CC BY for hardware designs.
+- Confirm the exact Pico board and sensor module models.
+- Bring the bill of materials and wiring guide into line with the final parts.
+- Assemble the circuit and verify each sensor reading.
+- Calibrate the soil sensor using the soil and growing setup where it will be used.
+- Check the enclosure fit, cable routing, and protection from rain and condensation.
+- Record test results and any changes made to the design.
 
 ## Credits
 
-TODO: credit libraries, tutorials, and designs you used or adapted, with links. If a program or sponsor provided parts or funding, you can thank them here, and some programs ask you to.
-
-
----
-
-## Project files, CAD, and diagrams
-
-The links below point to the current repository files. The assembly artwork is a **provisional CAD reference**, not a photograph or a claim that the physical device has been assembled or fit-tested.
-
-### Editable Onshape CAD source
-
-The STEP assembly has been imported into an Onshape document. [Open the editable garden sensor CAD document in Onshape](https://cad.onshape.com/documents/76dcfb4d009c138c2a52466f/w/306111fc660342a21d2bcbd/e/0c180c4d4b855de5293ec742). The model is a provisional reference design; dimensions and fit have not been verified against a physical build.
-
-### Assembly reference
-
-![Provisional Garden Sensor reference assembly](garden-sensor/docs/reference-assembly-overview.svg)
-
-- [Editable FreeCAD source assembly (.FCStd)](garden-sensor/hardware/garden_sensor_reference_assembly.FCStd)
-- [Fusion 360 editable-source generator (.py)](garden-sensor/hardware/create_fusion_source.py) — run inside Fusion 360, then save the generated design as `.f3d` for the Fabricate checker.
-- [STEP assembly export (.step)](garden-sensor/hardware/garden_sensor_reference_assembly.step)
-- [STL preview (.stl)](garden-sensor/hardware/garden_sensor_reference_assembly.stl)
-- [CadQuery source generator](garden-sensor/hardware/generate_reference_model.py)
-- [FreeCAD macro source](garden-sensor/hardware/generate_reference_assembly.FCMacro)
-- [Reference assembly assumptions and limitations](garden-sensor/hardware/REFERENCE_ASSEMBLY.md)
-
-### Wiring
-
-![Proposed Pico and sensor wiring diagram](garden-sensor/docs/wiring-diagram.svg)
-
-- [Wiring instructions](garden-sensor/docs/wiring.md)
-- [BOM (CSV)](bom.csv)
-
-### Firmware and tests
-
-- [MicroPython firmware](garden-sensor/firmware/main.py)
-- [Sensor calibration and CSV logic](garden-sensor/firmware/logic.py)
-- [Example configuration](garden-sensor/firmware/config.example.py)
-- [Unit tests](garden-sensor/tests/test_logic.py)
-- [CSV plotting tool](garden-sensor/tools/plot_readings.py)
-
-### PCB design status
-
-This project does not have a custom hand-routed PCB. It uses an off-the-shelf Raspberry Pi Pico H development board and separate sensor modules connected with jumper wires. No project-specific KiCad/EasyEDA schematic, PCB layout, or Gerber manufacturing files exist. The Pico's own circuit board is a commercially manufactured development board, not a PCB designed for this project. See [the PCB design status note](garden-sensor/docs/pcb_status.md).
-
-There is therefore no project-designed PCB screenshot to include. The wiring diagram above documents the connections between the development board and the sensor modules.
+This project uses the Raspberry Pi Pico and MicroPython ecosystem. Component-specific libraries, datasheets, and design references should be credited here as they are selected and used.
