@@ -4,6 +4,13 @@ A small garden-monitoring project built around a Raspberry Pi Pico. The idea is 
 
 **Project status:** Design and firmware are in progress. The CAD files are reference models, and the hardware has not yet been documented as assembled or tested.
 
+## Project photos
+
+| Hardware | CAD design |
+|---|---|
+| ![Raspberry Pi Pico connected over USB](images/pico-hardware.jpg) | ![Garden sensor enclosure CAD design](images/garden-sensor-cad.jpg) |
+| Raspberry Pi Pico board connected by USB. | Onshape screenshot of the provisional enclosure design; this is a CAD model, not a completed physical assembly. |
+
 ## What the project is meant to do
 
 - Read an analog capacitive soil-moisture sensor.
